@@ -1,9 +1,10 @@
-const Header = (props) => {
-  return <h1>{props.course}</h1>
+/* eslint-disable react/prop-types */
+const Header = ({course}) => {
+  return <h1>{course}</h1>
 }
 
-const Part = (props) => {
-  return <p>{props.part} {props.exercises}</p>
+const Part = ({part, exercises}) => {
+  return <p>{part} {exercises}</p>
 }
 
 const Content = () => {
@@ -29,8 +30,8 @@ const Content = () => {
   )
 }
 
-const Total = (props) => {
-  return <p>Number of exercises {props.a + props.b + props.c}</p>
+const Total = ({a, b, c}) => {
+  return <p>Number of exercises {a + b + c}</p>
 }
 
 const App = () => {
