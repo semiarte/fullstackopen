@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Filter, PersonForm, Persons } from './components/phonebook'
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -46,49 +47,25 @@ const App = () => {
       setNewPhone("")
     }
   }
-  // Last exercise: extract three components from the application: Filter, PersonForm, Persons
   return (
     <>
       <h2>Phonebook</h2>
-      <div>
-        Filter show with:  
-        <input 
-          value={newSearch}
-          onChange={searchName}
-        />
-      </div>
+      <Filter 
+        label="Filter show with:"
+        newSearch={newSearch}
+        searchName={searchName}
+      />
       <h2>Add a new</h2>
-      <form>
-        <div>
-          name: 
-          <input 
-            type="text"
-            value={newName}
-            onChange={handleInputNameChange}
-            placeholder="Write a name"
-          />
-        </div>
-        <div>
-          number: 
-          <input 
-            type="text"
-            value={newPhone}
-            onChange={handleInputPhoneChange}
-            placeholder="Write a phone number"
-          />
-        </div>
-        <div>
-          <button 
-            type="submit"
-            onClick={addNewPerson}
-          >
-            add
-          </button>
-        </div>
-      </form>
+      <PersonForm 
+        newName={newName}
+        newPhone={newPhone}
+        handleInputNameChange={handleInputNameChange}
+        handleInputPhoneChange={handleInputPhoneChange}
+        addNewPerson={addNewPerson}
+      />
       <h2>Numbers</h2>
       {filteredPersons.map(
-        person => <p key={person.id}>{person.name} {person.number}</p>
+        person => <Persons key={person.id} name={person.name} number={person.number} />
       )}
     </>
   )
